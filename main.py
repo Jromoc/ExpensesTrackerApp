@@ -30,4 +30,4 @@ with st.form("registro_form"):
 st.write("Registros:")
 
 # Mostrar la tabla en un formato más compacto y ajustable
-st.dataframe(st.session_state.gasto, height=400)  # Ajustar la altura de la tabla a 400 píxeles
+st.dataframe(st.session_state.gasto, width=200)  # Ajustar la altura de la tabla a 400 píxeles

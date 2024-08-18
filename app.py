@@ -3,12 +3,13 @@ from pages import pagina1, pagina2, pagina3
 
 # Sidebar para la navegación
 st.sidebar.title("Navegación")
-opcion = st.sidebar.radio("Ir a", ["Página 1", "Página 2", "Página 3"])
 
-# Cargar la página seleccionada
-if opcion == "Página 1":
+
+# Sidebar con botones para navegar entre páginas
+st.sidebar.title("Navegación")
+if st.sidebar.button("Registro de Gastos"):
     pagina1.mostrar_pagina()
-elif opcion == "Página 2":
+if st.sidebar.button("Descripcion de Gastos"):
     pagina2.mostrar_pagina()
-elif opcion == "Página 3":
+if st.sidebar.button("Chatbot"):
     pagina3.mostrar_pagina()

@@ -62,14 +62,6 @@ def pagina2():
         else:
             st.write("No hay datos para mostrar en la gráfica.")
     
-# Sidebar con botones para navegar entre páginas
-st.sidebar.title("Navegación")
-if st.sidebar.button("Registro de Gastos"):
-    st.session_state.pagina = "Página 1"
-if st.sidebar.button("Descripcion de Gastos"):
-    st.session_state.pagina = "Página 2"
-if st.sidebar.button("Chatbot"):
-    st.session_state.pagina = "Página 3"
     
 def pagina3():
     st.title("Chatbot")
@@ -99,6 +91,18 @@ def pagina3():
         st.write(f"**{i}.**")
         st.write(f"**Pregunta:** {intercambio['pregunta']}")
         st.write(f"**Respuesta:** {intercambio['respuesta']}")
+
+
+# Sidebar con botones para navegar entre páginas
+st.sidebar.title("Navegación")
+if st.sidebar.button("Registro de Gastos"):
+    st.session_state.pagina = "Página 1"
+if st.sidebar.button("Descripcion de Gastos"):
+    st.session_state.pagina = "Página 2"
+if st.sidebar.button("Chatbot"):
+    st.session_state.pagina = "Página 3"
+    
+
     
     
 # Mostrar la página seleccionada

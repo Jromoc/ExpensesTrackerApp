@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 from datetime import date
+import plotly.express as px  # Importar plotly para las gráficas
 
 # Inicializar la tabla si no existe en session_state
 if "gasto" not in st.session_state:
@@ -33,4 +34,19 @@ with st.form("registro_form"):
 st.write("Registros:")
 
 # Mostrar la tabla en un formato más compacto y ajustable, con desplazamiento horizontal
-st.dataframe(st.session_state.gasto, use_container_width=True)  # Añadir desplazamiento horizontal
+st.dataframe(st.session_state.gasto, use_container_width=True)
+
+# Botón para mostrar la gráfica de gastos por categoría
+if st.button("Mostrar gráfica de gastos por categoría"):
+    if not st.session_state.gasto.empty:
+        # Agrupar los gastos por categoría y sumar los montos
+        gastos_por_categoria = st.session_state.gasto.groupby("Categoría")["Monto"].sum().reset_index()
+
+        # Crear la gráfica de barras con plotly
+        fig = px.bar(gastos_por_categoria, x="Categoría", y="Monto", title="Gastos por Categoría",
+                     labels={"Monto": "Monto Total", "Categoría": "Categoría"}, color="Categoría")
+
+        # Mostrar la gráfica
+        st.plotly_chart(fig)
+    else:
+        st.write("No hay datos para mostrar en la gráfica.")

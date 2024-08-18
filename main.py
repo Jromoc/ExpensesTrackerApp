@@ -33,4 +33,4 @@ with st.form("registro_form"):
 st.write("Registros:")
 
 # Mostrar la tabla en un formato más compacto y ajustable, con desplazamiento horizontal
-st.dataframe(st.session_state.gasto, height=400, use_container_width=True)  # Añadir desplazamiento horizontal
+st.dataframe(st.session_state.gasto, use_container_width=True)  # Añadir desplazamiento horizontal

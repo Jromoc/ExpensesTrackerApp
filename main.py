@@ -8,8 +8,7 @@ if 'pagina' not in st.session_state:
 
 # Función para cada página
 def pagina1():
-    st.title("Página 1")
-    st.write("Bienvenido a la Página 1")
+
 
     # Inicializar la tabla si no existe en session_state
     if "gasto" not in st.session_state:
@@ -62,16 +61,29 @@ def pagina1():
             st.write("No hay datos para mostrar en la gráfica.")
 
 def pagina2():
-    st.title("Página 2")
-    st.write("Bienvenido a la Página 2")
+    st.title("Dashboards de Gastos")
+    
+        # Botón para mostrar la gráfica de gastos por categoría
+    if st.button("Mostrar gráfica de gastos por categoría"):
+        if not st.session_state.gasto.empty:
+            try:
+                # Agrupar los gastos por categoría y sumar los montos
+                gastos_por_categoria = st.session_state.gasto.groupby("Categoría")["Monto"].sum()
+
+                # Mostrar la gráfica de barras con st.bar_chart
+                st.bar_chart(gastos_por_categoria)
+            except Exception as e:
+                st.error(f"Error al generar la gráfica: {e}")
+        else:
+            st.write("No hay datos para mostrar en la gráfica.")
     
 # Sidebar con botones para navegar entre páginas
 st.sidebar.title("Navegación")
-if st.sidebar.button("Página 1"):
+if st.sidebar.button("Registro de Gastos"):
     st.session_state.pagina = "Página 1"
-if st.sidebar.button("Página 2"):
+if st.sidebar.button("Descripcion de Gastos"):
     st.session_state.pagina = "Página 2"
-if st.sidebar.button("Página 3"):
+if st.sidebar.button("Insigths"):
     st.session_state.pagina = "Página 3"
     
     

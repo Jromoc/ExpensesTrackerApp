@@ -33,20 +33,26 @@ with st.form("registro_form"):
 # Mostrar la tabla con los registros acumulados
 st.write("Registros:")
 
-# Mostrar la tabla en un formato más compacto y ajustable, con desplazamiento horizontal
-st.dataframe(st.session_state.gasto, use_container_width=True)
+try:
+    # Mostrar la tabla en un formato más compacto y ajustable, con desplazamiento horizontal
+    st.dataframe(st.session_state.gasto, use_container_width=True)
+except Exception as e:
+    st.error(f"Error al mostrar la tabla: {e}")
 
 # Botón para mostrar la gráfica de gastos por categoría
 if st.button("Mostrar gráfica de gastos por categoría"):
     if not st.session_state.gasto.empty:
-        # Agrupar los gastos por categoría y sumar los montos
-        gastos_por_categoria = st.session_state.gasto.groupby("Categoría")["Monto"].sum().reset_index()
+        try:
+            # Agrupar los gastos por categoría y sumar los montos
+            gastos_por_categoria = st.session_state.gasto.groupby("Categoría")["Monto"].sum().reset_index()
 
-        # Crear la gráfica de barras con plotly
-        fig = px.bar(gastos_por_categoria, x="Categoría", y="Monto", title="Gastos por Categoría",
-                     labels={"Monto": "Monto Total", "Categoría": "Categoría"}, color="Categoría")
+            # Crear la gráfica de barras con plotly
+            fig = px.bar(gastos_por_categoria, x="Categoría", y="Monto", title="Gastos por Categoría",
+                         labels={"Monto": "Monto Total", "Categoría": "Categoría"}, color="Categoría")
 
-        # Mostrar la gráfica
-        st.plotly_chart(fig)
+            # Mostrar la gráfica
+            st.plotly_chart(fig)
+        except Exception as e:
+            st.error(f"Error al generar la gráfica: {e}")
     else:
         st.write("No hay datos para mostrar en la gráfica.")

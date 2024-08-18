@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+from datetime import date
 
 # Inicializar la tabla si no existe en session_state
 if "gasto" not in st.session_state:

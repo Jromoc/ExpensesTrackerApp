@@ -8,8 +8,6 @@ if 'pagina' not in st.session_state:
 
 # Función para cada página
 def pagina1():
-
-
     # Inicializar la tabla si no existe en session_state
     if "gasto" not in st.session_state:
         st.session_state.gasto = pd.DataFrame(columns=["Descripción", "Categoría", "Monto", "Fecha"])

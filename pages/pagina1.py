@@ -1,4 +1,6 @@
 import streamlit as st
+import pandas as pd
+from datetime import date
 
 def mostrar_pagina():
     # Inicializar la tabla si no existe en session_state

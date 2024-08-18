@@ -11,11 +11,14 @@ st.header("Registro de Gastos")
 with st.form("registro_form"):
     descripcion = st.text_input("Descripción del gasto")
     
-    # El usuario selecciona la categoría de una lista predefinida
+    # Selección de categoría desde una lista
     categoria = st.selectbox("Categoría", ["Comida", "Transporte", "Entretenimiento", "Otros"])
     
     monto = st.number_input("Monto", min_value=0.0, format="%.2f")
-    fecha = st.date_input("Fecha", value=date.today())  # Añadir el campo para seleccionar la fecha
+    
+    # Capturar la fecha de manera automática
+    fecha = date.today()
+    
     submitted = st.form_submit_button("Agregar Gasto")
 
     # Agregar nuevo registro a la tabla
@@ -29,5 +32,5 @@ with st.form("registro_form"):
 # Mostrar la tabla con los registros acumulados
 st.write("Registros:")
 
-# Mostrar la tabla en un formato más compacto y ajustable
-st.dataframe(st.session_state.gasto, width=200)  # Ajustar la altura de la tabla a 400 píxeles
+# Mostrar la tabla en un formato más compacto y ajustable, con desplazamiento horizontal
+st.dataframe(st.session_state.gasto, height=400, use_container_width=True)  # Añadir desplazamiento horizontal

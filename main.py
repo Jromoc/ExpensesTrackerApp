@@ -2,6 +2,9 @@ import streamlit as st
 import pandas as pd
 from datetime import date
 
+# Inicialización del estado de la página
+if 'pagina' not in st.session_state:
+    st.session_state.pagina = "Página 1"
 
 # Función para cada página
 def pagina1():
@@ -62,11 +65,18 @@ def pagina2():
     st.title("Página 2")
     st.write("Bienvenido a la Página 2")
     
-# Sidebar para la navegación
-pagina = st.sidebar.selectbox("Selecciona una página", ["Página 1", "Página 2", "Página 3"])
-
+# Sidebar con botones para navegar entre páginas
+st.sidebar.title("Navegación")
+if st.sidebar.button("Página 1"):
+    st.session_state.pagina = "Página 1"
+if st.sidebar.button("Página 2"):
+    st.session_state.pagina = "Página 2"
+if st.sidebar.button("Página 3"):
+    st.session_state.pagina = "Página 3"
+    
+    
 # Mostrar la página seleccionada
-if pagina == "Página 1":
+if st.session_state.pagina == "Página 1":
     pagina1()
-elif pagina == "Página 2":
+elif st.session_state.pagina == "Página 2":
     pagina2()

@@ -12,7 +12,7 @@ with st.form("registro_form"):
     descripcion = st.text_input("Descripción del gasto")
     
     # Selección de categoría desde una lista
-    categoria = st.selectbox("Categoría", ["Comida", "Transporte", "Entretenimiento", "Otros"])
+    categoria = st.selectbox("Categoría", ["Comida", "Transporte", "Entretenimiento", "Ropa", "Otros"])
     
     monto = st.number_input("Monto", min_value=0.0, format="%.2f")
     

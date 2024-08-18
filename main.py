@@ -43,9 +43,11 @@ if st.button("Mostrar gráfica de gastos por categoría"):
     if not st.session_state.gasto.empty:
         try:
             # Agrupar los gastos por categoría y sumar los montos
-            gastos_por_categoria = st.session_state.gasto.groupby("Categoría")["Monto"].sum().reset_index()
+            gastos_por_categoria = st.session_state.gasto.groupby("Categoría")["Monto"].sum()
 
-            # Grafica con Streamlit
-            st.bar_chart(gastos_por_categoria, x="Categoría", y="Monto", title="Gastos por Categoría",
-                         labels={"Monto": "Monto Total", "Categoría": "Categoría"}, color="Categoría")
-            
+            # Mostrar la gráfica de barras con st.bar_chart
+            st.bar_chart(gastos_por_categoria)
+        except Exception as e:
+            st.error(f"Error al generar la gráfica: {e}")
+    else:
+        st.write("No hay datos para mostrar en la gráfica.")

@@ -1,5 +1,6 @@
 import streamlit as st
-from pages import pagina1, pagina2, pagina3
+from . import pagina3
+from . import pagina1, pagina2
 
 
 

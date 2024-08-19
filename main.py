@@ -44,7 +44,6 @@ def pagina1():
     except Exception as e:
         st.error(f"Error al mostrar la tabla: {e}")
 
-
 def pagina2():
     st.title("Dashboards de Gastos")
     
@@ -61,8 +60,7 @@ def pagina2():
                 st.error(f"Error al generar la gráfica: {e}")
         else:
             st.write("No hay datos para mostrar en la gráfica.")
-    
-    
+      
 def pagina3():
     st.title("Chatbot")
 
@@ -101,14 +99,3 @@ if st.sidebar.button("Descripcion de Gastos"):
     st.session_state.pagina = "Página 2"
 if st.sidebar.button("Chatbot"):
     st.session_state.pagina = "Página 3"
-    
-
-    
-    
-# Mostrar la página seleccionada
-if st.session_state.pagina == "Página 1":
-    pagina1()
-elif st.session_state.pagina == "Página 2":
-    pagina2()
-elif st.session_state.pagina == "Página 3":
-    pagina3()

@@ -62,9 +62,7 @@ def pagina2():
                 st.error(f"Error al generar la gráfica: {e}")
         else:
             st.write("No hay datos para mostrar en la gráfica.")
-      
-      
-      
+           
 def pagina3():
     st.title("Chatbot")
 

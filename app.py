@@ -1,8 +1,6 @@
 import streamlit as st
 from pages import pagina1, pagina2, pagina3
 
-# Sidebar para la navegación
-st.sidebar.title("Navegación")
 
 
 # Sidebar con botones para navegar entre páginas
@@ -13,3 +11,5 @@ if st.sidebar.button("Descripcion de Gastos"):
     pagina2.mostrar_pagina()
 if st.sidebar.button("Chatbot"):
     pagina3.mostrar_pagina()
+    
+    

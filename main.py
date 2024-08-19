@@ -46,8 +46,9 @@ def pagina1():
 
 def pagina2():
     st.title("Dashboards de Gastos")
+    st.header("Grafica de Barras")
     
-        # Botón para mostrar la gráfica de gastos por categoría
+    # Botón para mostrar la gráfica de gastos por categoría
     if st.button("Mostrar gráfica de gastos por categoría"):
         if not st.session_state.gasto.empty:
             try:
@@ -60,6 +61,8 @@ def pagina2():
                 st.error(f"Error al generar la gráfica: {e}")
         else:
             st.write("No hay datos para mostrar en la gráfica.")
+      
+      
       
 def pagina3():
     st.title("Chatbot")
